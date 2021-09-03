@@ -5,3 +5,7 @@
 h1 {
     font-weight: bold;
 }
+
+.leaflet-control-colorbar {
+    font-weight: bold;
+}
