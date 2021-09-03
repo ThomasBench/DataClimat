@@ -12,6 +12,14 @@ window.dashExtensions = Object.assign({}, window.dashExtensions, {
             var color = csc(feature.properties[colorProp])
             style.fillColor = color // set color based on color prop.
             return style // send back the style
+        },
+        function1: function(feature, latlng) {
+            return L.circleMarker(latlng, {
+                color: 'black',
+                fillOpacity: 1,
+                radius: 4,
+                fillColor: 'black'
+            })
         }
     }
 });
