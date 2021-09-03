@@ -12,7 +12,8 @@ Le dépôt s'organise comme suit :
 <li>assets/ contient le logo et les fichiers css/js nécessaires à la stylisation du site et à son interactivité, bien qu'une grande partie soit géré par le framework en python </li>
 <li> data/ contient l'ensemble des données nécessaires à la création des visualisations, et le fichiers geojson nécessaires à la géolocalisation des données sur la carte </li>
 </ul>
-### Contact
+
+ Contact
 
 De part sa nature en construction, le site est ammené a être modifé dans son contenu et dans son organisation régulièrement au cours des prochaines semaines.
 Si vous souhaitez nous contactez pour une modification, une question, ou une remarque, vous êtes prié de le faire par mail à <paula.forteza@assemblee-nationale.fr>, 
