@@ -1,11 +1,32 @@
 .nav-item {
-    font-weight: bold;
+    /* font-weight: bold; */
+    font-size : 4vmin;
 }
 
+@media screen and (orientation:portrait){
+div {
+    font-size:3.5vmin;
+}
+}
+@media screen and (orientation:landscape){
+    div {
+        font-size:15px;
+    }
+
+}
 h1 {
     font-weight: bold;
+    font-size : 8vmin;
 }
 
 .leaflet-control-colorbar {
     font-weight: bold;
+}
+
+.unitbutton {
+    font-size : 13px;
+}
+
+p {
+    text-align : justify;
 }
