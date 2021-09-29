@@ -16,6 +16,7 @@ Le dépôt s'organise comme suit :
 ## Installation
 
 ```
+pip install poetry
 python app.py
 ```
 
