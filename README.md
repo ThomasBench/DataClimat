@@ -13,6 +13,12 @@ Le dépôt s'organise comme suit :
 <li> data/ contient l'ensemble des données nécessaires à la création des visualisations, et les fichiers geojson nécessaires à la géolocalisation des données sur la carte </li>
 </ul>
 
+## Installation
+
+```
+python app.py
+```
+
  Contact
 
 De part sa nature en construction, le site est ammené a être modifé dans son contenu et dans son organisation régulièrement au cours des prochaines semaines.
