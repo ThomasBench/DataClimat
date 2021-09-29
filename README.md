@@ -17,7 +17,8 @@ Le dépôt s'organise comme suit :
 
 ```
 pip install poetry
-python app.py
+poetry install
+poetry run python app.py
 ```
 
  Contact
