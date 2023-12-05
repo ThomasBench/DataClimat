@@ -57,7 +57,8 @@ def treat_nc(path, pluie = False):
     for element in geo_json['features'] : 
         element = point_to_poly(element)
     # print(mmax,mmin)
-    geo_json = dlx.geojson_to_geobuf(geo_json)
+    # geo_json = dlx.geojson_to_geobuf(geo_json)
+    # geo_json = dlx.geojson_to_geobuf(geo_json)
     return geo_json
 def rgb_to_hex(rgb):
     return '#'+ '%02x%02x%02x' % rgb
