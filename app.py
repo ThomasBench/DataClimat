@@ -9,10 +9,10 @@ import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 import xarray as xr
 import dash
-import dash_core_components as dcc
+from dash import dcc
 import dash_bootstrap_components as dbc
 import dash_daq as daq
-import dash_html_components as html
+from dash import html
 from dash.dependencies import Input, Output, State , MATCH , ALL
 import dash_leaflet as dl
 from dash_extensions.javascript import assign, arrow_function
@@ -102,65 +102,65 @@ cities_geo = dlx.dicts_to_geojson(cities)
 text_dict = {
     'ssp119' :dcc.Markdown(
         '''
-        Le scénario SSP1 est initialement intitulé *La route verte* par le GIEC. Dans celui-ci, le monde s'oriente progressivement, 
-        mais de manière généralisée, vers une voie plus durable, en mettant l'accent sur un développement plus inclusif qui respecte 
-        les limites environnementales perçues. La gestion des biens communs mondiaux s'améliore lentement, les investissements dans 
-        l'éducation et la santé accélèrent la transition démographique, et l'accent mis sur la croissance économique se transforme en un 
-        accent plus large sur le bien-être humain. Sous l'impulsion d'un engagement croissant en faveur de la réalisation des objectifs de 
-        développement, les inégalités se réduisent tant entre les pays qu'à l'intérieur de ceux-ci. La consommation est orientée vers une 
-        faible croissance matérielle et une moindre intensité en ressources et en énergie.** Ce scénario prévoit un arrêt total des émissions 
+        Le scénario SSP1 est initialement intitulé *La route verte* par le GIEC. Dans celui-ci, le monde s'oriente progressivement,
+        mais de manière généralisée, vers une voie plus durable, en mettant l'accent sur un développement plus inclusif qui respecte
+        les limites environnementales perçues. La gestion des biens communs mondiaux s'améliore lentement, les investissements dans
+        l'éducation et la santé accélèrent la transition démographique, et l'accent mis sur la croissance économique se transforme en un
+        accent plus large sur le bien-être humain. Sous l'impulsion d'un engagement croissant en faveur de la réalisation des objectifs de
+        développement, les inégalités se réduisent tant entre les pays qu'à l'intérieur de ceux-ci. La consommation est orientée vers une
+        faible croissance matérielle et une moindre intensité en ressources et en énergie.** Ce scénario prévoit un arrêt total des émissions
         de CO2 aux alentours de 2050.** '''),
     'ssp126' :dcc.Markdown(
-        '''Ce scénario est similaire au scénario précédent SSP1 - 1.9 à une différence près : 
+        '''Ce scénario est similaire au scénario précédent SSP1 - 1.9 à une différence près :
         **l’arrêt total des émissions de CO2 est ici prévu aux alentours de 2075**.'''),
     'ssp585' :dcc.Markdown(
         '''
-            Ce scénario est initialement intitulé *L’autoroute* par le GIEC. Dans celui-ci, le monde fait de plus en plus confiance aux marchés 
-            compétitifs, à l'innovation et aux sociétés participatives pour produire des progrès technologiques rapides et développer le 
-            capital humain comme voie vers le développement durable. Les marchés mondiaux sont de plus en plus intégrés. Il y a également de 
-            forts investissements dans la santé, l'éducation et les institutions pour améliorer le capital humain et social. Dans le même temps, 
-            la poussée du développement économique et social va de pair avec l'exploitation d'abondantes ressources en combustibles fossiles et 
-            l'adoption de modes de vie à forte intensité de ressources et d'énergie dans le monde entier. Tous ces facteurs entraînent une croissance 
-            rapide de l'économie mondiale, tandis que la population mondiale atteint un pic et décline au cours du 21e siècle. Les problèmes 
-            environnementaux locaux, comme la pollution atmosphérique, sont gérés avec succès. On croit en la capacité de gérer efficacement les 
-            systèmes sociaux et écologiques, y compris par la géo-ingénierie si nécessaire. **Ce scénario prévoit un triplement des émissions de CO2 
+            Ce scénario est initialement intitulé *L’autoroute* par le GIEC. Dans celui-ci, le monde fait de plus en plus confiance aux marchés
+            compétitifs, à l'innovation et aux sociétés participatives pour produire des progrès technologiques rapides et développer le
+            capital humain comme voie vers le développement durable. Les marchés mondiaux sont de plus en plus intégrés. Il y a également de
+            forts investissements dans la santé, l'éducation et les institutions pour améliorer le capital humain et social. Dans le même temps,
+            la poussée du développement économique et social va de pair avec l'exploitation d'abondantes ressources en combustibles fossiles et
+            l'adoption de modes de vie à forte intensité de ressources et d'énergie dans le monde entier. Tous ces facteurs entraînent une croissance
+            rapide de l'économie mondiale, tandis que la population mondiale atteint un pic et décline au cours du 21e siècle. Les problèmes
+            environnementaux locaux, comme la pollution atmosphérique, sont gérés avec succès. On croit en la capacité de gérer efficacement les
+            systèmes sociaux et écologiques, y compris par la géo-ingénierie si nécessaire. **Ce scénario prévoit un triplement des émissions de CO2
             d’ici 2075. **'''),
     'Pessimiste' :dcc.Markdown(
         """
-        Le scénario pessimiste décrit un monde très hétérogène. Le thème sous-jacent est l'autosuffisance et la préservation des identités 
-        locales. Les schémas de fécondité entre régions convergent très lentement, avec pour résultat un accroissement continu de la 
-        population mondiale. Le développement économique a une orientation principalement régionale, et la croissance économique par habitant 
+        Le scénario pessimiste décrit un monde très hétérogène. Le thème sous-jacent est l'autosuffisance et la préservation des identités
+        locales. Les schémas de fécondité entre régions convergent très lentement, avec pour résultat un accroissement continu de la
+        population mondiale. Le développement économique a une orientation principalement régionale, et la croissance économique par habitant
         et l'évolution technologique sont plus fragmentées et plus lentes que dans les autres scénarios. """),
     'Optimiste' :dcc.Markdown(
-        ''' 
-        Le scénario optimiste décrit un monde convergent avec la même population mondiale culminant au milieu du siècle et déclinant ensuite, 
-        comme dans le scénario pessimiste, mais avec des changements rapides dans les structures économiques vers une économie de services et 
-        d'information, avec des réductions dans l'intensité des matériaux et l'introduction de technologies propres et utilisant les ressources 
-        de manière efficiente. L'accent est placé sur des solutions mondiales orientées vers une viabilité économique, sociale et 
+        '''
+        Le scénario optimiste décrit un monde convergent avec la même population mondiale culminant au milieu du siècle et déclinant ensuite,
+        comme dans le scénario pessimiste, mais avec des changements rapides dans les structures économiques vers une économie de services et
+        d'information, avec des réductions dans l'intensité des matériaux et l'introduction de technologies propres et utilisant les ressources
+        de manière efficiente. L'accent est placé sur des solutions mondiales orientées vers une viabilité économique, sociale et
         environnementale, y compris une meilleure équité, mais sans initiatives supplémentaires pour gérer le climat.'''),
     'Intermédiaire' :dcc.Markdown(
         '''Le scénario intermédiaire
-            décrit un monde futur dans lequel la croissance économique est très rapide, la population mondiale atteint un maximum au milieu du 
+            décrit un monde futur dans lequel la croissance économique est très rapide, la population mondiale atteint un maximum au milieu du
             siècle pour décliner ensuite et de nouvelles technologies plus efficaces sont introduites rapidement. Les principaux thèmes sous-jacents
-             sont la convergence entre régions, le renforcement des capacités et des interactions culturelles et sociales accrues, avec une 
-             réduction substantielle des différences régionales dans le revenu par habitant. Les sources d'énergies utilisées sont à l'équilibre 
+             sont la convergence entre régions, le renforcement des capacités et des interactions culturelles et sociales accrues, avec une
+             réduction substantielle des différences régionales dans le revenu par habitant. Les sources d'énergies utilisées sont à l'équilibre
              entre les énergies fossiles et renouvelables. '''),
     'Référence' :dcc.Markdown(
     ''' Le scénario de référence
-        représente l'état de la France en 2008 par rapport à l'indicateur choisi. 
+        représente l'état de la France en 2008 par rapport à l'indicateur choisi.
         Une description de l'indicateur peut être lu en survolant le bouton "Unité" ci-dessous''')
     }
 
 unit_text_dict = {
     'spi' : html.P(
-        '''Le SPI est un indice permettant de mesurer la sécheresse météorologique. Il s’agit d’un indice de probabilité qui repose 
-            seulement sur les précipitations. Les probabilités sont standardisées de sorte qu’un SPI de 0 indique une quantité de 
+        '''Le SPI est un indice permettant de mesurer la sécheresse météorologique. Il s’agit d’un indice de probabilité qui repose
+            seulement sur les précipitations. Les probabilités sont standardisées de sorte qu’un SPI de 0 indique une quantité de
             précipitation médiane . L’indice est négatif pour les sécheresses, et positif pour les conditions humides.'''),
     'ifm' : html.P(
         '''
-    Cet indice, développé par le Centre de recherches forestières du Pacifique au Canada, se base sur différents indicateurs météorologiques 
-    tels que la vitesse du vent, la température, l'humidité et les précipitations, et est corrélé au nombre de feux de forêt en un lieu donné. 
-    Ainsi, un doublement de l'IFM présage un doublement des risques de départ de feux. Cet indice est entre autres utilisé aujourd'hui 
+    Cet indice, développé par le Centre de recherches forestières du Pacifique au Canada, se base sur différents indicateurs météorologiques
+    tels que la vitesse du vent, la température, l'humidité et les précipitations, et est corrélé au nombre de feux de forêt en un lieu donné.
+    Ainsi, un doublement de l'IFM présage un doublement des risques de départ de feux. Cet indice est entre autres utilisé aujourd'hui
     préventivement pour positionner des canadairs près des lieux à haut risque.
         ''')
 
@@ -353,13 +353,13 @@ dict_range = {2008 : 'REF', 2030: 'H1',2060: 'H2', 2100: 'H3'}
 ## Create content + Tabs
 temp_content = dbc.Card([
     create_selector_scenar( liste_scenar_giec,0),
-    create_graph_giec(0), 
-    create_source_button(0, source_dict['giec']) 
+    create_graph_giec(0),
+    create_source_button(0, source_dict['giec'])
     ])
 
 prec_content = dbc.Card([
     create_selector_scenar( liste_scenar_giec,1),
-    create_graph_giec(1), 
+    create_graph_giec(1),
     create_source_button(1, source_dict['giec'])
     ])
 
@@ -370,7 +370,7 @@ feux_content = dbc.Card([
     ])
 sech_content = dbc.Card([
     create_selector_scenar(liste_scenar_feu,3),
-    dbc.Card(id = {'type' : 'feux-dates', 'index' : 3},children = [html.Div('Choisir une date de projection : '), html.Br(),slider_sech], className  ='border-0'), 
+    dbc.Card(id = {'type' : 'feux-dates', 'index' : 3},children = [html.Div('Choisir une date de projection : '), html.Br(),slider_sech], className  ='border-0'),
     dbc.Row(children = [dbc.Col(create_source_button(3, source_dict['drias'])),dbc.Col(create_unit_button(3,unit_text_dict['spi']))], no_gutters = True)
     ])
 
@@ -606,3 +606,6 @@ def modify_fig(scenar):
 
     return fig
 
+
+if __name__ == "__main__":
+    app.run_server(debug = True)
